@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
-    <BrowserRouter basename="/chari_baas_docs">
+    <BrowserRouter basename="/api-docs-template">
         <App />
     </BrowserRouter>
 );
