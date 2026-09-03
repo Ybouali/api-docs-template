@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Search, Loader2 } from 'lucide-react';
 import { TabContentWrapper } from '../TabContentWrapper';
 import { ApiResultDisplay } from '../../common/ApiResultDisplay';
-
-const BASE_URL = 'https://api-sandbox.charimoney.com';
+import type { ApiResult } from '../../../types/api';
+import { siteConfig } from '../../../config/site';
 
 export const CheckTab: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
-    const [result, setResult] = useState<any>(null);
+    const [result, setResult] = useState<ApiResult | null>(null);
 
     const handleCheck = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,33 +20,25 @@ export const CheckTab: React.FC = () => {
         setError('');
         setIsLoading(true);
         setResult(null);
-        
-        const apiKey = localStorage.getItem('chari_api_key') || 'sk_test_dummy';
-        const url = `${BASE_URL}/api/v1/customer/check?phoneNumber=${encodeURIComponent(phone)}`;
-        
+
+        const apiKey =
+            localStorage.getItem(siteConfig.apiKeyStorageKey) ?? 'sk_test_dummy';
+        const url = `${siteConfig.apiBaseUrl}/api/v1/customer/check?phoneNumber=${encodeURIComponent(phone)}`;
+
         try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${apiKey}`,
-                    'Content-Type': 'application/json'
-                }
+                    Authorization: `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json',
+                },
             });
-            
-            const data = await response.json();
-            setResult({
-                method: 'GET',
-                url,
-                status: response.status,
-                response: data
-            });
-        } catch (err: any) {
-            setResult({
-                method: 'GET',
-                url,
-                status: 500,
-                error: err.message || 'Failed to connect to API'
-            });
+
+            const data: unknown = await response.json();
+            setResult({ method: 'GET', url, status: response.status, response: data });
+        } catch (err: unknown) {
+            const message = err instanceof Error ? err.message : 'Failed to connect to API';
+            setResult({ method: 'GET', url, status: 500, error: message });
         } finally {
             setIsLoading(false);
         }
@@ -54,30 +46,34 @@ export const CheckTab: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <TabContentWrapper 
-                title="Check Customer" 
+            <TabContentWrapper
+                title="Check Customer"
                 description="Verify if a phone number is registered in the system"
                 icon={Search}
             >
                 <form onSubmit={handleCheck} className="space-y-6">
                     <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                        <label
+                            htmlFor="check-phone"
+                            className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
+                        >
                             Phone Number
                         </label>
                         <input
+                            id="check-phone"
                             type="text"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            placeholder="+2126xxxxxxx"
-                            className={`input-base ${error ? 'border-chari-red focus:ring-chari-red/30' : ''}`}
+                            placeholder={siteConfig.phonePlaceholder}
+                            className={`input-base ${error ? 'border-error focus:ring-error/30' : ''}`}
                         />
-                        {error && <p className="text-xs text-chari-red font-medium">{error}</p>}
+                        {error && <p className="text-xs text-error font-medium">{error}</p>}
                     </div>
-                    
+
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 shadow-chari-blue-600/20 mt-4"
+                        className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 mt-4"
                     >
                         {isLoading ? (
                             <>

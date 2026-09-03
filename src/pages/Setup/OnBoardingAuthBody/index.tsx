@@ -51,7 +51,7 @@ function OnBoardingAuthBody({
             {currentStep > 1 && (
                 <button
                     onClick={handleBack}
-                    className="flex items-center gap-2 text-neutral-500 hover:text-chari-blue-600 font-bold text-sm transition-colors group"
+                    className="flex items-center gap-2 text-neutral-500 hover:text-brand-600 font-bold text-sm transition-colors group"
                 >
                     <span className="group-hover:-translate-x-1 transition-transform">←</span>
                     Back to previous step

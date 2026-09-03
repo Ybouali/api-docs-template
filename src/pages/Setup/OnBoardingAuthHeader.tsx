@@ -18,35 +18,13 @@ function OnBoardingAuth({
     };
 
     const steps = [
-        {
-            icon: KeyRound,
-            title: 'Enter API Key',
-            description: 'Paste your secret key',
-            color: 'blue',
-        },
-        {
-            icon: ShieldCheck,
-            title: 'Whitelist IP',
-            description: 'Add your server / client IP',
-            color: 'blue',
-        },
-        {
-            icon: Globe,
-            title: 'Pick Environment',
-            description: 'Choose test or production',
-            color: 'blue',
-        },
-        {
-            icon: Zap,
-            title: 'Test Connection',
-            description: 'Verify everything works',
-            color: 'blue',
-        },
+        { icon: KeyRound,   title: 'Enter API Key',      description: 'Paste your secret key'       },
+        { icon: ShieldCheck, title: 'Whitelist IP',       description: 'Add your server / client IP' },
+        { icon: Globe,       title: 'Pick Environment',   description: 'Choose test or production'   },
+        { icon: Zap,         title: 'Test Connection',    description: 'Verify everything works'     },
     ];
 
-    const isStepCompleted = (stepNumber: number) => {
-        return stepNumber <= progress;
-    };
+    const isStepCompleted = (stepNumber: number) => stepNumber <= progress;
 
     return (
         <div className="w-full flex items-center justify-center overflow-x-auto pb-4 scrollbar-none">
@@ -60,13 +38,14 @@ function OnBoardingAuth({
                         <button
                             key={index}
                             onClick={() => handleStepClick(stepNumber)}
+                            aria-current={isCurrentStep ? 'step' : undefined}
                             className={`
                                 flex-1 group relative flex flex-col p-6 rounded-2xl border-2 transition-all duration-300 text-left
                                 ${
                                     isCompleted
-                                        ? 'border-chari-blue-600 bg-chari-blue-50/30 dark:bg-chari-blue-900/5'
+                                        ? 'border-brand-600 bg-brand-50/30 dark:bg-brand-900/5'
                                         : isCurrentStep
-                                        ? 'border-chari-blue-400 bg-white dark:bg-neutral-800 shadow-lg shadow-chari-blue-100/20'
+                                        ? 'border-brand-400 bg-white dark:bg-neutral-800 shadow-lg shadow-brand-100/20'
                                         : 'border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900 opacity-60 hover:opacity-100 hover:border-neutral-200'
                                 }
                             `}
@@ -77,9 +56,9 @@ function OnBoardingAuth({
                                     w-10 h-10 rounded-xl flex items-center justify-center transition-colors
                                     ${
                                         isCompleted
-                                            ? 'bg-chari-green text-white'
+                                            ? 'bg-success text-white'
                                             : isCurrentStep
-                                            ? 'bg-chari-blue-600 text-white'
+                                            ? 'bg-brand-600 text-white'
                                             : 'bg-neutral-200 dark:bg-neutral-700 text-neutral-500'
                                     }
                                 `}
@@ -92,9 +71,7 @@ function OnBoardingAuth({
                                 </div>
                                 <span
                                     className={`text-[10px] font-black uppercase tracking-widest ${
-                                        isCurrentStep
-                                            ? 'text-chari-blue-600'
-                                            : 'text-neutral-400'
+                                        isCurrentStep ? 'text-brand-600' : 'text-neutral-400'
                                     }`}
                                 >
                                     Step 0{stepNumber}
@@ -105,7 +82,7 @@ function OnBoardingAuth({
                                 <h3
                                     className={`font-bold text-sm ${
                                         isCurrentStep
-                                            ? 'text-chari-blue-900 dark:text-white'
+                                            ? 'text-brand-900 dark:text-white'
                                             : 'text-neutral-600 dark:text-neutral-400'
                                     }`}
                                 >

@@ -1,17 +1,14 @@
-'use client';
-
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import { siteConfig } from '../../../../config/site';
 
 interface APIKeyProps {
-    onSubmit?: (apiKey: string) => void | Promise<void>;
     onNext?: () => void;
     isLoading?: boolean;
     errorMessage?: string;
 }
 
 export default function APIKey({
-    onSubmit,
     onNext,
     isLoading = false,
     errorMessage,
@@ -19,29 +16,21 @@ export default function APIKey({
     const [apiKey, setApiKey] = useState('');
     const [localError, setLocalError] = useState('');
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!apiKey.trim()) {
-            setLocalError('Veuillez entrer votre clé API');
+            setLocalError('Please enter your API key');
             return;
         }
 
         setLocalError('');
-
-        if (onSubmit) {
-            try {
-                await onSubmit(apiKey);
-            } catch (err) {
-                setLocalError('Une erreur est survenue lors de la sauvegarde');
-                return;
-            }
-        }
+        localStorage.setItem(siteConfig.apiKeyStorageKey, apiKey.trim());
 
         if (onNext) onNext();
     };
 
-    const displayError = errorMessage || localError;
+    const displayError = errorMessage ?? localError;
 
     return (
         <div className="w-full">
@@ -54,10 +43,10 @@ export default function APIKey({
                         <p className="text-neutral-500 mt-2 text-sm">
                             Get your API key from the{' '}
                             <a
-                                href="https://chari.ma/"
+                                href={siteConfig.dashboardUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-chari-blue-600 hover:text-chari-blue-700 font-medium underline"
+                                className="text-brand-600 hover:text-brand-700 font-medium underline"
                             >
                                 developer dashboard
                             </a>
@@ -80,14 +69,12 @@ export default function APIKey({
                             disabled={isLoading}
                             className={`input-base ${
                                 displayError
-                                    ? 'border-chari-red focus:border-chari-red focus:ring-chari-red/30'
+                                    ? 'border-error focus:border-error focus:ring-error/30'
                                     : ''
                             }`}
                         />
                         {displayError && (
-                            <p className="text-sm text-chari-red mt-1.5">
-                                {displayError}
-                            </p>
+                            <p className="text-sm text-error mt-1.5">{displayError}</p>
                         )}
                     </div>
 
@@ -109,7 +96,7 @@ export default function APIKey({
                             'Save & Continue'
                         )}
                     </button>
-                    
+
                     <p className="text-center text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
                         Secure connection • Your key is stored safely
                     </p>

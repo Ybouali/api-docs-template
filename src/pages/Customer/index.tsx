@@ -131,13 +131,9 @@ export default function Customer() {
 
                 <div className="mb-8 flex items-center justify-between p-4 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-2xl shadow-sm">
                     <div className="flex items-center gap-4">
-                        <div className="px-3 py-1 bg-chari-blue-50 dark:bg-chari-blue-900/20 rounded-lg border border-chari-blue-100 dark:border-chari-blue-800/30">
-                            <span className="text-xs font-mono font-bold text-chari-blue-600 uppercase tracking-tighter">
-                                {
-                                    TABS_CONFIG.find(
-                                        (t) => t.name === activeTab
-                                    )?.method
-                                }
+                        <div className="px-3 py-1 bg-brand-50 dark:bg-brand-900/20 rounded-lg border border-brand-100 dark:border-brand-800/30">
+                            <span className="text-xs font-mono font-bold text-brand-600 uppercase tracking-tighter">
+                                {TABS_CONFIG.find((t) => t.name === activeTab)?.method}
                             </span>
                         </div>
                         <div className="flex flex-col leading-tight">
@@ -145,16 +141,12 @@ export default function Customer() {
                                 Target Endpoint
                             </span>
                             <span className="text-xs md:text-sm font-mono font-medium text-neutral-700 dark:text-neutral-300">
-                                {
-                                    TABS_CONFIG.find(
-                                        (t) => t.name === activeTab
-                                    )?.endpoint
-                                }
+                                {TABS_CONFIG.find((t) => t.name === activeTab)?.endpoint}
                             </span>
                         </div>
                     </div>
                     <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-neutral-50 dark:bg-neutral-900/50 rounded-full border border-neutral-200 dark:border-neutral-800">
-                        <div className="w-1.5 h-1.5 rounded-full bg-chari-green animate-pulse" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
                         <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-tight">
                             API Live
                         </span>

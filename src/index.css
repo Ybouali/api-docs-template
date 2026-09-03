@@ -1,30 +1,30 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-chari-blue-50: #eff6ff;
-    --color-chari-blue-100: #dbeafe;
-    --color-chari-blue-200: #bfdbfe;
-    --color-chari-blue-300: #93c5fd;
-    --color-chari-blue-400: #60a5fa;
-    --color-chari-blue-500: #3b82f6;
-    --color-chari-blue-600: #2563eb;
-    --color-chari-blue-700: #1d4ed8;
-    --color-chari-blue-900: #1e3a8a;
+    --color-brand-50: #eff6ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-200: #bfdbfe;
+    --color-brand-300: #93c5fd;
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #3b82f6;
+    --color-brand-600: #2563eb;
+    --color-brand-700: #1d4ed8;
+    --color-brand-900: #1e3a8a;
 
-    --color-chari-orange-50: #fff7ed;
-    --color-chari-orange-100: #ffedd5;
-    --color-chari-orange-200: #fed7aa;
-    --color-chari-orange-300: #fdba74;
-    --color-chari-orange-500: #f97316;
-    --color-chari-orange-700: #c2410c;
-    --color-chari-orange-900: #7c2d12;
+    --color-accent-50: #fff7ed;
+    --color-accent-100: #ffedd5;
+    --color-accent-200: #fed7aa;
+    --color-accent-300: #fdba74;
+    --color-accent-500: #f97316;
+    --color-accent-700: #c2410c;
+    --color-accent-900: #7c2d12;
 
-    --color-chari-green: #10b981;
-    --color-chari-green-600: #059669;
-    --color-chari-green-700: #047857;
+    --color-success: #10b981;
+    --color-success-600: #059669;
+    --color-success-700: #047857;
 
-    --color-chari-red: #ef4444;
-    --color-chari-red-600: #dc2626;
+    --color-error: #ef4444;
+    --color-error-600: #dc2626;
 
     --color-neutral-50: #fafafa;
     --color-neutral-100: #f5f5f5;
@@ -94,11 +94,11 @@ html {
 
 @layer components {
     .btn-primary {
-        @apply px-5 py-2.5 bg-chari-blue-600 hover:bg-chari-blue-700 text-white font-medium rounded-xl shadow transition-all duration-200 focus-visible:ring-2 focus-visible:ring-chari-blue-400 focus-visible:ring-offset-2 active:scale-95;
+        @apply px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl shadow transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 active:scale-95;
     }
 
     .btn-secondary {
-        @apply px-5 py-2.5 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium rounded-xl shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-chari-blue-400 focus-visible:ring-offset-2 active:scale-95;
+        @apply px-5 py-2.5 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium rounded-xl shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 active:scale-95;
     }
 
     .card {
@@ -106,7 +106,7 @@ html {
     }
 
     .input-base {
-        @apply w-full px-4 py-2.5 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-xl text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 focus:border-chari-blue-500 focus:ring-2 focus:ring-chari-blue-200/50 focus-visible:outline-none transition-all;
+        @apply w-full px-4 py-2.5 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-xl text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200/50 focus-visible:outline-none transition-all;
     }
 
     .json-viewer {
