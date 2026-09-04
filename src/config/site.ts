@@ -27,13 +27,13 @@ const config = {
             'A modern API platform for developers. Build, test, and integrate faster.',
         logoUrl: null as string | null,
         faviconUrl: '/vite.svg',
-        websiteUrl: 'https://example.com',
+        websiteUrl: 'https://ybouali.github.io',
         supportEmail: 'support@example.com',
         socialLinks: [
             {
                 platform: 'github',
                 label: 'GitHub',
-                url: 'https://github.com/your-org/your-repo',
+                url: 'https://github.com/Ybouali/api-docs-template',
             },
         ] as SocialLink[],
     },
@@ -107,7 +107,7 @@ const config = {
         /**
          * Must match `base` in vite.config.ts when not serving from domain root.
          */
-        basePath: '/',
+        basePath: '/api-docs-template/',
     },
 };
 
