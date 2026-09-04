@@ -2,11 +2,8 @@
  * SiteConfigContext.tsx
  *
  * Provides the portal configuration to the entire React tree.
- * Already mounted in src/main.tsx — you don't need to add it manually.
- *
- * In tests, wrap the component under test with:
- *   <ConfigProvider value={{ ...config, api: { ...config.api, name: 'Test API' } }}>
  */
+/* eslint-disable react-refresh/only-export-components */
 
 import { createContext, useContext, type ReactNode } from 'react';
 import { siteConfig } from './site';

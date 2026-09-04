@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <>
             <MetaTags
-                title={siteConfig.api.name}
+                title="Introduction"
                 description={siteConfig.company.description}
             />
             <div className="flex flex-col items-center gap-8 w-full max-w-7xl mx-auto pb-12">

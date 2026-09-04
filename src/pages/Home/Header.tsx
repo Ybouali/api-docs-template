@@ -51,7 +51,7 @@ export default function Header() {
                     variants={itemVariants}
                     className="text-lg md:text-xl font-medium text-brand-100 mb-8 opacity-90 max-w-2xl mx-auto"
                 >
-                    Test, learn, integrate – sandbox ready
+                    {siteConfig.company.description}
                 </motion.p>
 
                 <motion.div

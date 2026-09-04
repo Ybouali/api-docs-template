@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        sans-serif;
+
     --color-brand-50: #eff6ff;
     --color-brand-100: #dbeafe;
     --color-brand-200: #bfdbfe;
@@ -9,13 +12,17 @@
     --color-brand-500: #3b82f6;
     --color-brand-600: #2563eb;
     --color-brand-700: #1d4ed8;
+    --color-brand-800: #1e40af;
     --color-brand-900: #1e3a8a;
+    --color-brand-950: #172554;
 
     --color-accent-50: #fff7ed;
     --color-accent-100: #ffedd5;
     --color-accent-200: #fed7aa;
     --color-accent-300: #fdba74;
+    --color-accent-400: #fb923c;
     --color-accent-500: #f97316;
+    --color-accent-600: #ea580c;
     --color-accent-700: #c2410c;
     --color-accent-900: #7c2d12;
 
@@ -29,10 +36,8 @@
     --color-neutral-50: #fafafa;
     --color-neutral-100: #f5f5f5;
 
-    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-        0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 * {
@@ -69,12 +74,8 @@
     border: 1px solid #1f2937;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #6b7280;
-}
-
 ::selection {
-    background: #f97316;
+    background: var(--color-accent-500);
     color: white;
 }
 
@@ -84,7 +85,8 @@ html {
 
 @layer base {
     body {
-        @apply bg-neutral-50 text-neutral-900 antialiased;
+        @apply bg-neutral-50 text-neutral-900 antialiased font-sans;
+        font-family: var(--font-sans);
     }
 
     .dark body {
@@ -110,15 +112,6 @@ html {
     }
 
     .json-viewer {
-        @apply bg-neutral-50 dark:bg-neutral-950 p-4 rounded-xl overflow-auto font-mono text-sm leading-relaxed border border-neutral-200 dark:border-neutral-800 max-h-[60vh] whitespace-pre-wrap;
-    }
-
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        @apply bg-neutral-50 dark:bg-neutral-950 p-4 rounded-xl overflow-auto font-mono text-sm leading-relaxed border border-neutral-200 dark:border-neutral-800 max-h-[60vh] whitespace-pre;
     }
 }
